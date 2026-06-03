@@ -2,8 +2,12 @@
 
 ## Setup
 
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
+Download the mod from the releases tab then import it into minecraft. That simple! Make sure you have the latest fabric loader version and that you are playing minecraft 1.21.11.
 
-## License
+## Usage
+Do /find username and the mod will tell you the coords of the username you have entered.
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+## Extras
+uh thx to whoever made fabric and the [fabricmc mod template generator](https://fabricmc.net/develop/template/). amazing tools <3. made with jetbrains. slight use of chatgpt but not vibecoded
+
+<3
