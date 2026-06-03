@@ -4,14 +4,18 @@ import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 
 
 
 class findPlayerThread implements Runnable {
+    private CommandContext<FabricClientCommandSource> context;
+
+    public findPlayerThread(CommandContext<FabricClientCommandSource> context) {
+        this.context = context;
+    }
+
     public void run() {
-        CommandContext<FabricClientCommandSource> context = findPlayer.commandContext;
         SquaremapInstance squaremapInstance = new SquaremapInstance();
         ServerData serverData = Minecraft.getInstance().getCurrentServer();
         String host = Http.createUri(serverData.ip).toString();
@@ -22,7 +26,6 @@ class findPlayerThread implements Runnable {
             context.getSource().sendError(Component.literal("TescoClient only works on EarthMC"));
         }
     }
-    
 }
 
 public class findPlayer {
@@ -30,7 +33,7 @@ public class findPlayer {
     public int findPlayerThreadStarter(CommandContext<FabricClientCommandSource> context){
         commandContext = context;
 
-        findPlayerThread findPlayerThread = new findPlayerThread();
+        findPlayerThread findPlayerThread = new findPlayerThread(context);
 
         // initializing Thread Object
         Thread thread = new Thread(findPlayerThread);
