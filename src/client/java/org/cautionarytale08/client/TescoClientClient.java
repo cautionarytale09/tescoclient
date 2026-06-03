@@ -1,5 +1,6 @@
 package org.cautionarytale08.client;
 
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
@@ -13,7 +14,7 @@ public class TescoClientClient implements ClientModInitializer {
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, environment) -> {
             dispatcher.register(ClientCommandManager.literal("find")
                     .then(ClientCommandManager.argument("username", StringArgumentType.string())
-                            .executes(new findPlayer()::findPlayerCommand)));
+                            .executes(new findPlayer()::findPlayerThreadStarter)));
         });
 	}
 }

@@ -15,6 +15,7 @@ import java.util.Map;
 public class earthmcFindPlayer {
 
     static int findPlayerCommandEarthmc(SquaremapInstance squaremapInstance, CommandContext<FabricClientCommandSource> context){String playerArgs = StringArgumentType.getString(context, "username");
+        Minecraft minecraft = Minecraft.getInstance();
         if (!CheckOnline.checkPlayerOnline(playerArgs)){
             context.getSource().sendError(Component.literal(playerArgs + " is not online"));
             return 1;
@@ -33,8 +34,8 @@ public class earthmcFindPlayer {
         for (Object element : playerCoords.keySet()){
             response = response + "\n - " + element + " = " + playerCoords.get(element);
         }
-
-        context.getSource().sendFeedback(Component.literal(response));
+        String finalResponse = response;
+        minecraft.execute(() -> {context.getSource().sendFeedback(Component.literal(finalResponse));});
         return 1;
 
     }
