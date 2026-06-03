@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.phys.shapes.MinecartCollisionContext;
 
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -30,12 +31,11 @@ public class earthmcFindPlayer {
             return 1;
         }
 
-        String response = argsUsername;
-        for (Object element : playerCoords.keySet()){
-            response = response + "\n - " + element + " = " + playerCoords.get(element);
-        }
-        String finalResponse = response;
-        minecraft.execute(() -> {context.getSource().sendFeedback(Component.literal(finalResponse));});
+
+        MessageFormat messageFormat = new MessageFormat("{0}\n- world = {1}\n- x = {2}\n- y = {3}\n- z = {4}\n- yaw = {5}");
+        String result = messageFormat.format(new Object[]{playerArgs, playerCoords.get("world"), playerCoords.get("x"), playerCoords.get("y"), playerCoords.get("z"), playerCoords.get("yaw")});
+
+        minecraft.execute(() -> {context.getSource().sendFeedback(Component.literal(result));});
         return 1;
 
     }
