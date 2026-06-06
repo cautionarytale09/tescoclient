@@ -1,0 +1,7 @@
+site_name: TescoClient
+site_url: https://localhost:8000
+markdown_extensions:
+  - attr_list
+
+theme:
+  name: material
