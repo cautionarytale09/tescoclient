@@ -6,12 +6,16 @@ import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.minecraft.client.Minecraft;
+import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.phys.shapes.MinecartCollisionContext;
 
 import java.text.MessageFormat;
 import java.util.List;
 import java.util.Map;
+
+import static net.minecraft.world.entity.EntityReference.getPlayer;
 
 public class earthmcFindPlayer {
 
